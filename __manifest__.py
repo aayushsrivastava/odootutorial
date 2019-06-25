@@ -1,7 +1,7 @@
 {
-	'name': 'Application Name',
-    'summary' : "Application Details",
-	'description' : """Application Details""",
+	'name': 'GMC Module',
+    'summary' : "Employee Group Mediclaim",
+	'description' : """Employee Group Mediclaim""",
 	'author' : "ISGEC IT",
 	'license' : "AGPL-3",
 	'website' : "www.isgec.com",
@@ -10,7 +10,7 @@
 	'depends' : ['base'],
 	'data' : [
 		     'security/groups.xml',
-		     'views/odoomodule_odootable.xml',
+		     'views/gmcmodule_policytable.xml',
 	         'security/ir.model.access.csv',
 	         ],	
 }

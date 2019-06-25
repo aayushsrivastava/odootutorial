@@ -1,1 +1,1 @@
-from . import odoomodule_odootable
+from . import gmcmodule_policytable

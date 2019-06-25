@@ -2,7 +2,7 @@ from odoo import models, fields
 
 
 
-class OdooModuleOdooTable(models.Model):
-	_name = 'odoomodule.odootable'	
+class GMCModulePolicyTable(models.Model):
+	_name = 'gmcmodule.policytable'	
 	name = fields.Char('Title', required=True)	
 	
