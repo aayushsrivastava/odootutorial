@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Usage: 
+# $ ./Utility/replacescript.sh __manifest__.py models/__init__.py models/gmcmodule_policytable.py security/groups.xml security/ir.model.access.csv views/gmcmodule_policytable.xml
+
 oldnames=(
     "Application Name"
     "Application Details"
