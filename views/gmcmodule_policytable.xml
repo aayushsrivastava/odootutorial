@@ -7,7 +7,7 @@ res_model="gmcmodule.policytable" />
 
 <menuitem
  id="gmcmodule_policytable_menu"
- name="GMC Module" 
+ name="GMC Module-Policy" 
  action="gmcmodule_policytable_action"
  parent=""
  sequence="5" />
@@ -18,7 +18,10 @@ res_model="gmcmodule.policytable" />
    <field name="arch" type="xml">
          <form>
  	     <group>
-	        <field name="name"/>	
+	        <field name="name"/>
+		<field name="startdate"/>
+		<field name="enddate"/>
+		<field name="premium"/>
 	     </group>
 	 </form>
    </field>
