@@ -10,6 +10,7 @@ res_model="gmcmodule.policytable" />
  name="GMC Module-Policy" 
  action="gmcmodule_policytable_action"
  parent=""
+ groups="group_gmcadmin"
  sequence="5" />
 
 <record id ="gmcmodule_policytable_view_form" model="ir.ui.view">
