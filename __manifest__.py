@@ -11,6 +11,7 @@
 	'data' : [
 		     'security/groups.xml',
 		     'views/gmcmodule_policytable.xml',
+			'views/gmcmodule_employeetable.xml',
 	         'security/ir.model.access.csv',
 	         ],	
 }
