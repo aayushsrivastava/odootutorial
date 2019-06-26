@@ -17,3 +17,14 @@ class GmcModuleEmployeeTable(models.Model):
 	def _compute_premium(self):
 		for record in self:
 			record.proratapremium = ((record.policytype_id.premium)/365) * record.coveringdays * record.suminsured
+
+	@api.multi
+	def name_get(self):
+		res = []
+		for record in self:
+			name = record.name
+			if record.cardno:
+ 				name = record.cardno + "-" + record.name
+			res.append((record.id, name))
+		return res
+
