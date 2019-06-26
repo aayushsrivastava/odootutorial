@@ -10,6 +10,6 @@ class GmcModuleEmployeeTable(models.Model):
 	suminsured = fields.Float('Sum Insured(in Lac)', required=True)	
 	proratapremium = fields.Float('Prorata Premium in Rs.', required=True)
 	coveringdays = fields.Integer('Covering Days', required=True)
-	startdate = fields.Date('Start Date', required=True)
-	enddate = fields.Date('End Date', required=True)	
+	startdate = fields.Date('Start Date', related='policytype_id.startdate', store=True)
+	enddate = fields.Date('End Date', related='policytype_id.enddate', store=True)	
 	
