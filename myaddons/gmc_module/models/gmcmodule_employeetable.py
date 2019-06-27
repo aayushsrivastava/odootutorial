@@ -57,3 +57,7 @@ class GmcModuleEmployeeTable(models.Model):
 		if defemployee:
 			for record in self:
 				record.dateofjoining = defemployee.dateofjoining
+
+	_sql_constraints = [
+		('relation_uniq', 'unique(cardno)', 'This Employee Already Exist')
+	]
