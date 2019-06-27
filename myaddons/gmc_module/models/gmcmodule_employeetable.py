@@ -13,6 +13,14 @@ class GmcModuleEmployeeTable(models.Model):
 	startdate = fields.Date('Start Date', related='policytype_id.startdate', store=True)
 	enddate = fields.Date('End Date', related='policytype_id.enddate', store=True)	
 	member_id = fields.One2many('gmcmodule.membertable', 'employee_id', 'Member Data')
+	familynumber = fields.Char(string="Family Number", readonly=True, required=True, copy=False, default='New')
+
+	@api.model
+	def create(self, vals):
+		seq = self.env['ir.sequence'].next_by_code('gmcmodule.employeetable')
+		vals.update({'familynumber':seq})
+		res = super(GmcModuleEmployeeTable, self).create(vals)
+		return res
 	
 	@api.depends('coveringdays', 'policytype_id', 'suminsured')
 	def _compute_premium(self):

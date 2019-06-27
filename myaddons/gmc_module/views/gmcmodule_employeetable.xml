@@ -18,6 +18,7 @@ res_model="gmcmodule.employeetable" />
    <field name="arch" type="xml">
          <form>
  	     <group>
+ 	    <field name="familynumber"/>
 		<field name="cardno"/>
 		<field name="name"/>
 		<field name="dateofjoining"/>
