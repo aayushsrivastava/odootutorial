@@ -9,3 +9,7 @@ class HrModuleEmployeeTable(models.Model):
 	dateofjoining = fields.Date('Date of Joining', required=True)
 	user_id = fields.Many2one('res.users', ondelete='set null', string='Login User')	
 	login = fields.Char('Login ID', related='user_id.login',store=True)
+
+	_sql_constraints = [
+		('unique_login', 'unique(login)', 'The given Login ID is already present in HR records')
+	]
