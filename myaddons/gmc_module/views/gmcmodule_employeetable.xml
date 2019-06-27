@@ -27,6 +27,7 @@ res_model="gmcmodule.employeetable" />
 		<field name="coveringdays"/>
 		<field name="startdate"/>
 		<field name="enddate"/>
+		<field name="member_id"/>
 	     </group>
 	 </form>
    </field>

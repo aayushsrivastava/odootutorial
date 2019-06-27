@@ -12,6 +12,7 @@ class GmcModuleEmployeeTable(models.Model):
 	coveringdays = fields.Integer('Covering Days', required=True)
 	startdate = fields.Date('Start Date', related='policytype_id.startdate', store=True)
 	enddate = fields.Date('End Date', related='policytype_id.enddate', store=True)	
+	member_id = fields.One2many('gmcmodule.membertable', 'employee_id', 'Member Data')
 	
 	@api.depends('coveringdays', 'policytype_id', 'suminsured')
 	def _compute_premium(self):
