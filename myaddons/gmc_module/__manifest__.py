@@ -9,10 +9,11 @@
 	'version' : '12.0.1.0.0',
 	'depends' : ['base','hr_module'],
 	'data' : [
-		     'security/groups.xml',
-		     'views/gmcmodule_policytable.xml',
+			'security/groups.xml',
+			'views/gmcmodule_policytable.xml',
 			'views/gmcmodule_employeetable.xml',
-	         'security/ir.model.access.csv',
-                 'security/security.xml',
-	         ],	
+			'views/gmcmodule_membertable.xml',
+			'security/ir.model.access.csv',
+			'security/security.xml',
+			],	
 }

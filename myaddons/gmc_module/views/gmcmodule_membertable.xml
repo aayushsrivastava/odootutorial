@@ -5,7 +5,7 @@
 	name="Member Data"
 	res_model="gmcmodule.membertable"/>
 
-<record id = "gmcmodule_membertable_view_form", model="ir.ui.view">
+<record id = "gmcmodule_membertable_view_form" model="ir.ui.view">
 	<field name="name">Member Data Form</field>
 	<field name="model">gmcmodule.membertable</field>
 	<field name="arch" type="xml">
