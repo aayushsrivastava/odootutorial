@@ -1,8 +1,7 @@
 from odoo import api,fields,models,_
 from datetime import datetime
 import xlwt 
-import StringIO
-import cStringIO
+import io
 import base64
 
 
@@ -13,8 +12,7 @@ class gmc_details_wizard(models.TransientModel):
     def button_excel(self, data, context=None):
         try:
             import xlwt
-            from xlwt import *
-        except Exception, e:
+        except Exception(e):
             raise wizard.except_wizard(_('User Error'), _('Please Install xlwt Library.!'))
         filename = 'GMC Details.xls'
         string = 'Employee Details'
@@ -22,14 +20,14 @@ class gmc_details_wizard(models.TransientModel):
         worksheet = wb.add_sheet(string)
         style_value = xlwt.easyxf('font: bold on ,colour_index 0x36;' "borders: top double , bottom double ,left double , right double;")
         style_header = xlwt.easyxf('font: bold on ,colour_index black;' "borders: top double , bottom double ,left double , right double;")
-        style = XFStyle()
-        fnt = Font()
+        style = xlwt.XFStyle()
+        fnt = xlwt.Font()
         fnt.colour_index = 0x36
         fnt.bold = True
         fnt.width = 256 * 30
         style.font = fnt
-        style1 = XFStyle()
-        fnt = Font()
+        style1 = xlwt.XFStyle()
+        fnt = xlwt.Font()
         fnt.colour_index = 0x86
         fnt.bold = True
         fnt.width = 256 * 30
@@ -42,22 +40,20 @@ class gmc_details_wizard(models.TransientModel):
         worksheet.write(0,4,'Prorata Premium in Rs.',xlwt.easyxf('font: height 200, name Arial, colour_index black, bold on, italic off; align: wrap on, vert centre, horiz left;'))
 
         if self.gmc_policy_id:
-            self._cr.execute("""SELECT id FROM gmcmodule.employeetable
-                    WHERE policytype_id = %s""",(self.gmc_policy_id.id))
-            employee_ids = self._cr.fetchall()
             b = 1
             cnt = 0
-            for thisemployee_id in employee_ids:
+            employee_pool = self.env['gmcmodule.employeetable']
+            searched_employees = employee_pool.search([('policytype_id','=',self.gmc_policy_id.name)])
+            for thisemployee in searched_employees:
                 b+=1
                 cnt+=1
-                thisemployee_obj=self.env['gmcmodule.employeetable'].browse(thisemployee_id[0])
                 worksheet.write(b, 0, cnt)
-                worksheet.write(b, 1, thisemployee_obj.cardno or '')
-                worksheet.write(b, 2, thisemployee_obj.name or '')
-                worksheet.write(b, 3, thisemployee_obj.suminsured or '')
-                worksheet.write(b, 4, thisemployee_obj.proratapremium or '')
+                worksheet.write(b, 1, thisemployee.cardno or '')
+                worksheet.write(b, 2, thisemployee.name or '')
+                worksheet.write(b, 3, thisemployee.suminsured or '')
+                worksheet.write(b, 4, thisemployee.proratapremium or '')
 
-        fp = cStringIO.StringIO()
+        fp = io.BytesIO()
         wb.save(fp)
         out = base64.encodestring(fp.getvalue())
         view_gmcreport_id=self.env['view.gmcreport'].create({'file_name':out,'datas_fname':filename})

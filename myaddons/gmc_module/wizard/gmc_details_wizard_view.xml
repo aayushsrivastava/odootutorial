@@ -1,6 +1,13 @@
 <?xml version="1.0" ?>
+
 <openerp>
     <data>
+        <menuitem
+            id="gmc_detail_wizard_menu"
+            name="GMC Employee List" 
+            action="action_gmc_details_export"
+            parent=""
+            sequence="5" />
 		
     	<!--Export Form & Action -->
     	
@@ -11,10 +18,10 @@
                 <form string="Export">
                 <group>
                 
-                	 <field name="declaration_version_id" options="{'no_create': True}"/>
+                	 <field name="gmc_policy_id" options="{'no_create': True}"/>
                 	</group>
                 	<footer>
-                        <button name="button_excel" string=" Export Declaration Details" type="object" class="oe_highlight"  />
+                        <button name="button_excel" string=" Export Employee Details" type="object" class="oe_highlight"  />
                         or
                         <button string="Cancel" class="oe_link" special="cancel" />
                     </footer> 
