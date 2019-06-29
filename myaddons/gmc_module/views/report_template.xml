@@ -2,7 +2,7 @@
 <odoo>
 	<template id="report_employeelist">
 		<t t-call="web.external_layout">
-			<div class="article">
+			<div class="page">
 				<center>
 					<h4>
 						<header>
@@ -27,6 +27,17 @@
 						<tr>
 							<td width="25%">
 							<b>
+								<span>Family Number :</span>
+							</b>
+							</td>
+							<td width="75%">
+								<span t-field="doc.familynumber" />
+								<br />
+							</td>
+						</tr>
+						<tr>
+							<td width="25%">
+							<b>
 								<span>Sum Insured :</span>
 							</b>
 							</td>
@@ -35,9 +46,63 @@
 								<br />
 							</td>
 						</tr>
+						<tr>
+							<td width="25%">
+							<b>
+								<span>Policy :</span>
+							</b>
+							</td>
+							<td width="75%">
+								<span t-field="doc.policytype_id.name" />
+								<br />
+							</td>
+						</tr>
+						<tr>
+							<td width="25%">
+							<b>
+								<span>Start Date:</span>
+							</b>
+							</td>
+							<td width="75%">
+								<span t-field="doc.startdate" />
+								<br />
+							</td>
+						</tr>
+						<tr>
+							<td width="25%">
+							<b>
+								<span>End Date:</span>
+							</b>
+							</td>
+							<td width="75%">
+								<span t-field="doc.enddate" />
+								<br />
+							</td>
+						</tr>
 					</table>
 					<br />
 				</div>
+				<center>
+					<b>Members</b>
+				</center>
+				<table style="width: 100%;" class="table-bordered" cellpadding="1">
+					<tbody>
+						<tr style="background-color: #333; color: #ddd;">
+							<td style="width: 10%;">Serial No.</td>
+							<td style="width: 50%;">Member Name</td>
+							<td style="width: 20%;">Gender</td>
+							<td style="width: 20%;">Age</td>
+						</tr>
+						<t t-set="index" t-value="0"/>
+						<tr t-foreach="doc.member_id" t-as="family_member">
+							<t t-set="index" t-value="index + 1"/>
+							<td style="width: 10%;"><t t-esc="index"/></td>
+							<td style="width: 50%;"><t t-esc="family_member.name"/></td>
+							<td style="width: 20%;"><t t-esc="family_member.gender"/></td>
+							<td style="width: 20%;"><t t-esc="family_member.age"/></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</t>
 	</template>
