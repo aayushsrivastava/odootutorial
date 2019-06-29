@@ -18,5 +18,6 @@
 			'data/sequence.xml',
 			'views/report_template.xml',
 			'views/report_view.xml',
+			'wizard/gmc_details_wizard_view.xml'
 			],	
 }
